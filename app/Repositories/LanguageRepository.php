@@ -23,22 +23,27 @@ class LanguageRepository extends BaseRepository implements LanguageRepositoryInt
         array $join = [],
         array $relations = [],
     ) {
+        $query = $this->model->select($column);
 
-        $query = $this->model->select($column)->where(function ($query) use ($condition) {
+        $query->where(function ($query) use ($condition) {
             if (isset($condition['keyword']) && !empty($condition['keyword'])) {
                 $query->where('name', 'LIKE', '%' . $condition['keyword'] . '%')
                     ->orWhere('canonical', 'LIKE', '%' . $condition['keyword'] . '%');
             }
-            if (isset($condition['publish']) && $condition['publish'] != 0) {
-                $query->where('publish', '=', $condition['publish']);
-            }
-            return $query;
         });
+
+        if (isset($condition['publish']) && $condition['publish'] != 0) {
+            $query->where('publish', '=', $condition['publish']);
+        }
+
         if (!empty($join)) {
             $query->join(...$join);
         }
 
-        return $query->paginate($perPage)
-            ->withQueryString();
+        $query->orderBy($orderBy[0], $orderBy[1]);
+
+        return $query->paginate($perPage)->withQueryString();
     }
+
+
 }

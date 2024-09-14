@@ -72,7 +72,7 @@
                                                         <input class="form-control" type="password" id="password"
                                                             name="password">
 
-                                                        <div class="position-absolute top-50 end-0 translate-middle-y me-2"
+                                                        <div class="change_type position-absolute top-50 end-0 translate-middle-y me-2"
                                                             style="cursor: pointer;">
                                                             <span class="mdi mdi-eye-outline fs-3"></span>
                                                         </div>
@@ -123,6 +123,25 @@
 
         </div>
     </div>
+
+    <!-- JAVASCRIPT -->
+    <script src="{{ asset('admin/assets/libs/jquery/jquery.min.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $button = $('.change_type');
+            $input = $('#password');
+
+            $button.on('click', function() {
+                if ($input.attr('type') === 'password') {
+                    $input.attr('type', 'text');
+                    $button.html('<span class="mdi mdi-eye-off-outline fs-3"></span>');
+                } else {
+                    $input.attr('type', 'password');
+                    $button.html('<span class="mdi mdi-eye-outline fs-3"></span>');
+                }
+            });
+        })
+    </script>
 </body>
 
 </html>

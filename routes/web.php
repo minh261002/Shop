@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\LanguageController;
+use App\Http\Controllers\Admin\PostCatalogueController;
 use App\Http\Controllers\Admin\UserCatalogueController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Ajax\DashboardController;
@@ -15,6 +16,7 @@ Route::middleware(['login'])->group(function () {
 });
 
 Route::middleware(['auth'])->group(function () {
+
     Route::group(['prefix' => 'admin'], function () {
         Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
         Route::post('/logout', [AuthController::class, 'logout'])->name('admin.logout');
@@ -49,7 +51,18 @@ Route::middleware(['auth'])->group(function () {
             Route::put('/update/{id}', [LanguageController::class, 'update'])->name('admin.language.update');
             Route::delete('/delete/{id}', [LanguageController::class, 'destroy'])->name('admin.language.delete');
         });
+
+        //post_catalogue
+        Route::group(['prefix' => 'post/catalogue'], function () {
+            Route::get('/', [PostCatalogueController::class, 'index'])->name('admin.post.catalogue.index');
+            Route::get('/create', [PostCatalogueController::class, 'create'])->name('admin.post.catalogue.create');
+            Route::post('/store', [PostCatalogueController::class, 'store'])->name('admin.post.catalogue.store');
+            Route::get('/edit/{id}', [PostCatalogueController::class, 'edit'])->name('admin.post.catalogue.edit');
+            Route::put('/update/{id}', [PostCatalogueController::class, 'update'])->name('admin.post.catalogue.update');
+            Route::delete('/delete/{id}', [PostCatalogueController::class, 'destroy'])->name('admin.post.catalogue.delete');
+        });
     });
+
 });
 
 // Ajax

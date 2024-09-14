@@ -9,6 +9,12 @@
             var switchery = new Switchery(this, { color: '#1AB394'});
         })
     }
+
+    ELEMENT.sortui = () => {
+        $( "#sortable" ).sortable();
+		$( "#sortable" ).disableSelection();
+    }
+
     ELEMENT.changeStatus = () => {
         $(document).on('change', '.status', function(e){
             let _this = $(this)
@@ -30,6 +36,8 @@
                     if(res.flag == true){
                         _this.val(inputValue)
                     }
+
+                    FuiToast.success('Thay đổi trạng thái thành công')
 
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
@@ -81,6 +89,8 @@
                                     $('.js-switch-'+id[i]).find('span.switchery').attr('style', cssUnActive).find('small').attr('style', cssUnActive2)
                                 }
                             }
+
+                            FuiToast.success('Thay đổi trạng thái thành công')
                         }
                     },
                     error: function(jqXHR, textStatus, errorThrown) {
@@ -131,6 +141,46 @@
         $('#checkAll').prop('checked', allChecked);
     }
 
+    ELEMENT.int = () => {
+        $(document).on('change keyup blur', '.int', function(){
+            let _this = $(this)
+            let value = _this.val()
+            if(value === ''){
+                $(this).val('0')
+            }
+            value = value.replace(/\./gi, "")
+            _this.val(HT.addCommas(value))
+            if(isNaN(value)){
+                _this.val('0')
+            }
+        })
+
+        $(document).on('keydown', '.int', function(e){
+            let _this = $(this)
+            let data = _this.val()
+            if(data == 0){
+                let unicode = e.keyCode || e.which;
+                if(unicode != 190){
+                    _this.val('')
+                }
+            }
+        })
+    }
+
+
+
+    ELEMENT.addCommas = (nStr) => {
+        nStr = String(nStr);
+        nStr = nStr.replace(/\./gi, "");
+        let str ='';
+        for (let i = nStr.length; i > 0; i -= 3){
+            let a = ( (i-3) < 0 ) ? 0 : (i-3);
+            str= nStr.slice(a,i) + '.' + str;
+        }
+        str= str.slice(0,str.length-1);
+        return str;
+    }
+
    $(document).ready(() => {
         ELEMENT.switchery();
         ELEMENT.changeStatus()
@@ -138,5 +188,20 @@
         ELEMENT.checkBoxItem()
         ELEMENT.allChecked()
         ELEMENT.changeStatusAll()
+        ELEMENT.sortui()
+        ELEMENT.int()
+
     });
 })(jQuery);
+
+addCommas = (nStr) => {
+    nStr = String(nStr);
+    nStr = nStr.replace(/\./gi, "");
+    let str ='';
+    for (let i = nStr.length; i > 0; i -= 3){
+        let a = ( (i-3) < 0 ) ? 0 : (i-3);
+        str= nStr.slice(a,i) + '.' + str;
+    }
+    str= str.slice(0,str.length-1);
+    return str;
+}

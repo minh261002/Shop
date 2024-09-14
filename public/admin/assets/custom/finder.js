@@ -74,7 +74,7 @@
         $('.image-target').click(function(){
             let input = $(this)
             let type = 'Images';
-            HT.browseServerAvatar(input, type);
+            ELEMENT.browseServerAvatar(input, type);
         })
     }
 

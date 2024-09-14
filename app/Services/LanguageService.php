@@ -20,17 +20,26 @@ class LanguageService extends BaseService implements LanguageServiceInterface
 
     public function paginate($request)
     {
+        $condition['keyword'] = $request->input('keyword', '');
 
-        $condition['keyword'] = addslashes($request->input('keyword'));
-        $condition['publish'] = $request->integer('publish');
-        $perPage = $request->integer('perpage');
+        $publish = $request->input('publish');
+        if (!is_null($publish) && $publish !== '') {
+            $condition['publish'] = (int) $publish;
+        } else {
+            $condition['publish'] = 0;
+        }
+
+        $perPage = $request->integer('perpage', 10);
+
         $languages = $this->languageRepository->languagePagination(
             $this->paginateSelect(),
             $condition,
-            $perPage,
+            $perPage
         );
+
         return $languages;
     }
+
 
     public function create($request)
     {

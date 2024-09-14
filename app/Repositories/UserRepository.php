@@ -39,6 +39,8 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
             $query->join(...$join);
         }
 
+        $query->orderBy($orderBy[0], $orderBy[1]);
+
         return $query->paginate($perPage)
             ->withQueryString();
     }

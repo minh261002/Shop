@@ -42,11 +42,11 @@ class BaseRepository implements BaseRepositoryInterface
             ->customJoin($join ?? null)
             ->customGroupBy($extend['groupBy'] ?? null)
             ->customOrderBy($orderBy ?? null)
-            ->toSql();
+            // ->toSql();
 
-        //->paginate($perPage)
+        ->paginate($perPage)
 
-        //->withQueryString()->withPath(env('APP_URL') . $extend['path']);
+        ->withQueryString()->withPath(env('APP_URL') . $extend['path']);
     }
 
     public function create(array $payload = [])

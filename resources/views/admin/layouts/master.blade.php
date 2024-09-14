@@ -7,8 +7,6 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title')</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc." />
-    <meta name="author" content="Zoyothemes" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <!-- App favicon -->
@@ -30,6 +28,10 @@
     <link rel="stylesheet" type="text/css"
         href="https://cdn.jsdelivr.net/gh/lelinh014756/fui-toast-js@master/assets/css/toast@1.0.1/fuiToast.min.css">
 
+    <script>
+        var BASE_URL = '{{ env('APP_URL') }}';
+        var SUFFIX = '{{ config('apps.general.suffix') }}';
+    </script>
 </head>
 
 <!-- body start -->
@@ -75,8 +77,16 @@
     </div>
     <!-- END wrapper -->
 
+    <!-- ckeditor -->
+    <script src="{{ asset('admin/assets/libs/ckeditor/ckeditor.js') }}"></script>
+
+    <!--FuiToast js-->
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/gh/lelinh014756/fui-toast-js@master/assets/js/toast@1.0.1/fuiToast.min.js"></script>
+
     <!-- Vendor -->
     <script src="{{ asset('admin/assets/libs/jquery/jquery.min.js') }}"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
     <script src="{{ asset('admin/assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('admin/assets/libs/simplebar/simplebar.min.js') }}"></script>
     <script src="{{ asset('admin/assets/libs/node-waves/waves.min.js') }}"></script>
@@ -108,13 +118,12 @@
     <!--Sweet Alerts -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <!--FuiToast js-->
-    <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/gh/lelinh014756/fui-toast-js@master/assets/js/toast@1.0.1/fuiToast.min.js"></script>
-
     <script src="{{ asset('admin/assets/custom/finder.js') }}"></script>
 
+    <script src="{{ asset('admin/assets/custom/seo.js') }}"></script>
+
     <script src="{{ asset('admin/assets/libs/ckfinder_2/ckfinder.js') }}"></script>
+
     <script>
         $(document).ready(function() {
             $('.select2').select2({

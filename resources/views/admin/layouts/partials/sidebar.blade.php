@@ -60,10 +60,31 @@
                         <span> QL Ngôn Ngữ </span>
                         <span class="menu-arrow"></span>
                     </a>
+
                     <div class="collapse" id="sidebarLanguage">
                         <ul class="nav-second-level">
                             <li>
                                 <a href="{{ route('admin.language.index') }}">QL Ngôn Ngữ</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li>
+                    <a href="#sidebarPost" data-bs-toggle="collapse">
+                        <i data-feather="file-text"></i>
+                        <span> QL Bài Viết </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+
+                    <div class="collapse" id="sidebarPost">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="">QL Bài Viết</a>
+                            </li>
+
+                            <li>
+                                <a href="{{ route('admin.post.catalogue.index') }}">QL Nhóm Bài Viết</a>
                             </li>
                         </ul>
                     </div>
