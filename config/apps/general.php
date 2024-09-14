@@ -1,12 +1,12 @@
 <?php
 return [
     'status' => [
-        '0' => 'Chọn tình trạng',
+        '0' => '[Chọn tình trạng]',
         '1' => 'Đã kích hoạt',
         '2' => 'Kích hoạt bảo hành',
     ],
     'publish' => [
-        '0' => 'Chọn tình trạng',
+        '0' => '[Chọn tình trạng]',
         '1' => 'Không xuất bản',
         '2' => 'Xuất bản',
     ],

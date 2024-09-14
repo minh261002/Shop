@@ -41,6 +41,6 @@
     <div class="col-md-2">
         <a class="w-100 btn btn-primary rounded-0" href="{{ route('admin.user.catalogue.create') }}" class="w-100">
             <i data-feather="plus" class="icon-xs me-1"></i>
-            Thêm nhóm thành viên mới</a>
+            Thêm mới</a>
     </div>
 </div>

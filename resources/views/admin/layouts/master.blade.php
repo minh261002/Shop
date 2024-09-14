@@ -25,11 +25,17 @@
     <!--Select2 css-->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('admin/assets/css/custom-select2.css') }}">
+
+    <!--FuiToast css-->
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/gh/lelinh014756/fui-toast-js@master/assets/css/toast@1.0.1/fuiToast.min.css">
+
 </head>
 
 <!-- body start -->
 
 <body data-menu-color="dark" data-sidebar="default">
+    <div id="fui-toast"></div>
 
     <!-- Begin page -->
     <div id="app-layout">
@@ -102,6 +108,10 @@
     <!--Sweet Alerts -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    <!--FuiToast js-->
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/gh/lelinh014756/fui-toast-js@master/assets/js/toast@1.0.1/fuiToast.min.js"></script>
+
     <script>
         $(document).ready(function() {
             $('.select2').select2({
@@ -131,7 +141,9 @@
                                 _token: '{{ csrf_token() }}'
                             },
                             success: function(response) {
-                                location.reload();
+                                setTimeout(() => {
+                                    location.reload();
+                                }, 1000);
                             }
                         })
                     }
