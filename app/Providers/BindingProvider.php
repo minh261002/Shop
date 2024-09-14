@@ -9,6 +9,7 @@ class BindingProvider extends ServiceProvider
     protected $services = [
         'App\Services\Interfaces\UserServiceInterface' => 'App\Services\UserService',
         'App\Services\Interfaces\UserCatalogueServiceInterface' => 'App\Services\UserCatalogueService',
+        'App\Services\Interfaces\LanguageServiceInterface' => 'App\Services\LanguageService',
     ];
 
     protected $repositories = [
@@ -16,6 +17,7 @@ class BindingProvider extends ServiceProvider
         'App\Repositories\Interfaces\DistrictRepositoryInterface' => 'App\Repositories\DistrictRepository',
         'App\Repositories\Interfaces\ProvinceRepositoryInterface' => 'App\Repositories\ProvinceRepository',
         'App\Repositories\Interfaces\UserCatalogueRepositoryInterface' => 'App\Repositories\UserCatalogueRepository',
+        'App\Repositories\Interfaces\LanguageRepositoryInterface' => 'App\Repositories\LanguageRepository',
     ];
     /**
      * Register services.

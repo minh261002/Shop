@@ -15,6 +15,10 @@ return [
         '2' => 'Nofollow',
 
     ],
+    'current' => [
+        '0' => 'Không mặc định',
+        '1' => 'Mặc định',
+    ],
     'suffix' => '.html',
     'defaultPublish' => ['publish', '=', 2]
 ];

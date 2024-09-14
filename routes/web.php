@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\UserCatalogueController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Ajax\DashboardController;
@@ -37,6 +38,16 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/edit/{id}', [UserCatalogueController::class, 'edit'])->name('admin.user.catalogue.edit');
             Route::put('/update/{id}', [UserCatalogueController::class, 'update'])->name('admin.user.catalogue.update');
             Route::delete('/delete/{id}', [UserCatalogueController::class, 'destroy'])->name('admin.user.catalogue.delete');
+        });
+
+        //language
+        Route::group(['prefix' => 'language'], function () {
+            Route::get('/', [LanguageController::class, 'index'])->name('admin.language.index');
+            Route::get('/create', [LanguageController::class, 'create'])->name('admin.language.create');
+            Route::post('/store', [LanguageController::class, 'store'])->name('admin.language.store');
+            Route::get('/edit/{id}', [LanguageController::class, 'edit'])->name('admin.language.edit');
+            Route::put('/update/{id}', [LanguageController::class, 'update'])->name('admin.language.update');
+            Route::delete('/delete/{id}', [LanguageController::class, 'destroy'])->name('admin.language.delete');
         });
     });
 });
