@@ -19,7 +19,10 @@
                         <input type="checkbox" value="{{ $lang->id }}" class="input-checkbox checkBoxItem">
                     </td>
                     <td class="text-center">{{ $lang->name }}</td>
-                    <td class="text-center">{{ $lang->image }}</td>
+                    <td class="text-center">
+                        <img src="{{ env('APP_URL') . $lang->image }}" alt="{{ $lang->name }}" class="img-thumbnail"
+                            width="50">
+                    </td>
                     <td class="text-center">{{ $lang->canonical }}</td>
                     <td class="text-center js-switch-{{ $lang->id }}">
                         <input type="checkbox" value="{{ $lang->publish }}" class="js-switch status "

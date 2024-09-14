@@ -104,14 +104,15 @@
 
                             <div class="mb-3">
                                 <label for="canonical" class="form-label">Ảnh</label>
-                                <input type="text" class="form-control" id="image" name="image">
+                                <input type="text" name="image" value="{{ old('image', $language->image ?? '') }}"
+                                    class="form-control upload-image" placeholder="" autocomplete="off" data-type="Images">
                                 @error('image')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
 
                             <div class="mb-3">
-                                <a href="{{ route('admin.user.catalogue.index') }}" class="btn btn-secondary">Quay lại</a>
+                                <a href="{{ route('admin.language.index') }}" class="btn btn-secondary">Quay lại</a>
                                 <button type="submit" class="btn btn-primary">
                                     {{ $type == 'create' ? 'Thêm ngôn ngữ mới' : 'Cập nhật' }}
                                 </button>
